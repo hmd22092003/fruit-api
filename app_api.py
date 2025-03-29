@@ -59,10 +59,7 @@ def predict():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    # In danh sách route để debug
-    print("Registered Routes:")
-    for rule in app.url_map.iter_rules():
-        print(rule)
-
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    import os
+    PORT = int(os.environ.get("PORT", 5000))  # Lấy PORT từ biến môi trường
+    app.run(host="0.0.0.0", port=PORT, debug=False)
 
